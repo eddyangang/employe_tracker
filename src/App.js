@@ -18,7 +18,7 @@ function App() {
   useEffect(() => {
     if (filterInput.length){
       const a = employees.filter(employee => employee.email.includes(filterInput.toLowerCase()))
-      setfilteredEmployees([...a])
+      setfilteredEmployees(() => [...a])
       console.log("a", a);
       console.log("filtered", filteredEmployees); 
     }

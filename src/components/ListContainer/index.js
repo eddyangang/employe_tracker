@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import List from "../List"
 import "./style.css"
 
-export default function ListContainer({ employees}) {
+export default function ListContainer({ employees }) {
 
     const [users, setusers] = useState(employees)
     const sortCategory = (category) => {
@@ -32,7 +32,11 @@ export default function ListContainer({ employees}) {
         }
         
     }
-    
+    useEffect(() => {
+        console.log("FROM LIST CONTSINTER: ", employees.length);
+        setusers(employees)
+    }, [employees])
+
     const sort = (array, category) => {
         array.sort()
         for (let j = 0; j < array.length; j++) {
@@ -58,7 +62,7 @@ export default function ListContainer({ employees}) {
             </tr>
         </thead>
         <tbody>
-            <List employees={users}/>
+            <List employees={employees}/>
         </tbody>
     </table>
     )
